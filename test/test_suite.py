@@ -6,7 +6,7 @@ from sqlalchemy import func
 import sqlalchemy_bigquery.base as bq
 
 
-def test_mixed_case_column_not_quoted():
+def test_mixed_case_function_label_not_quoted():
     s = sql.select([
         func.sum().label("Pork")
     ]).compile(
@@ -25,3 +25,13 @@ def test_table_is_quoted_with_square_brackets():
         dialect=bq.BQDialect()
     )
     assert "[with.dot]" in str(s)
+
+
+def test_mixed_case_column_not_quoted():
+    s = sql.select([
+        sql.column("Pork")
+    ]).compile(
+        dialect=bq.BQDialect()
+    )
+    assert "[Pork]" not in str(s)
+    assert "Pork" in str(s)
