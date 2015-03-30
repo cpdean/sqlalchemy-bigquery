@@ -1,0 +1,3 @@
+SQLAlchemy==1.0.0b3
+py==1.4.25
+pytest==2.7.0
