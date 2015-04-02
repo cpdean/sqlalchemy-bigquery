@@ -32,7 +32,7 @@ class BQString(sqltypes.String):
 
     def literal_processor(self, dialect):
         def process(value):
-            value = value.replace("'", "\'")
+            value = value.replace("'", "\\'")
             return "'%s'" % value
         return process
 
