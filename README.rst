@@ -18,14 +18,12 @@ BigQuery.  Currently there's only support for generating SQL to send
 in a regular service call.
 
 
-To Install
+To Install::
 
-::
     pip install sqlalchemy-bigquery
 
-Usage Example
+Usage Example::
 
-::
     >>> import sqlalchemy.sql as sql
     >>>
     >>> from sqlalchemy import func
