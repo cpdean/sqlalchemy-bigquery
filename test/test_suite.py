@@ -35,3 +35,16 @@ def test_mixed_case_column_not_quoted():
     )
     assert "[Pork]" not in str(s)
     assert "Pork" in str(s)
+
+
+def test_string_literals_correctly_quoted():
+    s = sql.select([
+        func.look_at(sql.column("something"), "here's a single-quote")
+    ]).select_from(
+        sql.table("something_else")
+    ).compile(
+        compile_kwargs={"literal_binds": True},
+        dialect=bq.BQDialect()
+    )
+    assert "here''s" not in str(s)
+    assert "here\'s" in str(s)
