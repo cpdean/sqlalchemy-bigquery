@@ -9,7 +9,7 @@ import sqlalchemy_bigquery.base as bq
 
 def test_assert_correct_version():
     """ yep. update it every time """
-    assert "0.0.4" == sqlalchemy_bigquery.__version__
+    assert "0.0.5" == sqlalchemy_bigquery.__version__
 
 
 def test_mixed_case_function_label_not_quoted():
@@ -78,3 +78,13 @@ def test_string_literals_not_oldstyle_quoted_in_func():
         )
     )
     assert "Jason's" not in s
+
+
+def test_limit_compiles_correctly():
+    s = sql.select([sql.column('col1'),sql.column('col2')
+        ]).select_from(
+                sql.table('table_name')
+                ).limit(5
+                        ).compile(
+                                dialect=bq.BQDialect())
+    assert ('LIMIT 5' in str(s)) and ('TOP 5' not in str(s)) 
