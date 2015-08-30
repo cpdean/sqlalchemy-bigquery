@@ -1,0 +1,3 @@
+**0.0.5**
+
+* Basic implementation of a SQLAlchemy dialect for Google BigQuery.
