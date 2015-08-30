@@ -9,7 +9,7 @@ import sqlalchemy_bigquery.base as bq
 
 def test_assert_correct_version():
     """ yep. update it every time """
-    assert "0.0.4" == sqlalchemy_bigquery.__version__
+    assert "0.0.5" == sqlalchemy_bigquery.__version__
 
 
 def test_mixed_case_function_label_not_quoted():
