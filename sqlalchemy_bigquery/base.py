@@ -7,7 +7,6 @@ Directly derived from the mssql dialect with minor modifications
 """
 import sqlalchemy.dialects.mssql.base as mssql_base
 
-
 from sqlalchemy.dialects.mssql.base import MSDialect
 from sqlalchemy.sql import compiler
 from sqlalchemy.sql import sqltypes
@@ -38,6 +37,27 @@ class BQString(sqltypes.String):
 
 
 class BQSQLCompiler(mssql_base.MSSQLCompiler):
+
+    def get_select_precolumns(self,select, **kw):
+        """BQ uses TOP differently from MS-SQL"""
+        s = ""
+        if select._distinct:
+            s += "DISTINCT "
+
+        if s:
+            return s
+        else:
+            return compiler.SQLCompiler.get_select_precolumns(
+                    self, select, **kw)
+
+    def limit_clause(self, select, **kw):
+        """Only supports simple (integer) LIMIT clause"""
+        s = ""
+        if select._simple_int_limit and not select._offset:
+            s += "\nLIMIT %d " % select._limit
+        
+        return s
+
 
     def visit_column(self, column, add_to_result_map=None, **kwargs):
         # TODO: figure out how to do this immutably
