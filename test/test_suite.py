@@ -8,8 +8,19 @@ import sqlalchemy_bigquery.base as bq
 
 
 def test_assert_correct_version():
-    """ yep. update it every time """
-    assert "0.0.5" == sqlalchemy_bigquery.__version__
+    """
+    yep. update it every time.
+
+    This is a dumb test, but I want it here to remind future committers that if
+    you make a change to the package, your change should probably include a
+    test which verifies why the change was made.
+
+    If you want your changes to be seen in PyPI, you have to rev the version.
+    If you rev the version without updating the test suite, you will break the
+    tests.
+    """
+
+    assert "0.0.6" == sqlalchemy_bigquery.__version__
 
 
 def test_mixed_case_function_label_not_quoted():
