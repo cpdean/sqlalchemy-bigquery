@@ -1,4 +1,5 @@
-BigQuery dialect for SQLAlchemy.
+BigQuery dialect for SQLAlchemy
+-------------------------------
 
 BigQuery implements a DSL that is similar to SQL with a few quirks:
 
@@ -11,7 +12,8 @@ BigQuery implements a DSL that is similar to SQL with a few quirks:
 The first two issues (the non-standard "each" modifier for grouping and joining) has not been addressed yet.  BigQuery pushes the responsibility of when to recognize a table is too big for certain operations, and shifts burden onto you when you want to use those modifiers.  Sometimes you need them, sometimes you don't.  Leaving this as an exercise to the user to just string replace those out of what this dialect returns.
 
 
-### Usage
+Usage
+=====
 
 There currently isn't support for using sqlalchemy to connect to
 BigQuery.  Currently there's only support for generating SQL to send
