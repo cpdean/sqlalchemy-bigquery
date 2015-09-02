@@ -1,3 +1,7 @@
+**0.0.6 (2015-09-02) **
+
+* Correct how the LIMIT clause compiles (louispotok)
+
 **0.0.5**
 
 * Basic implementation of a SQLAlchemy dialect for Google BigQuery.
