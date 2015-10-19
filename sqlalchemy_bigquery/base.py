@@ -69,6 +69,11 @@ class BQSQLCompiler(mssql_base.MSSQLCompiler):
             **kwargs
         )
 
+    def visit_match_op_binary(self, binary, operator, **kw):
+        return "%s CONTAINS %s" % (
+            self.process(binary.left, **kw),
+            self.process(binary.right, **kw))
+
 
 class BQIdentifierPreparer(compiler.IdentifierPreparer):
     def __init__(self, dialect):
