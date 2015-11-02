@@ -1,3 +1,7 @@
+**0.0.7 (2015-11-02) **
+
+* Implement sqlalchemy's .match() operator so it maps to the CONTAINS clause properly (gcbirzan)
+
 **0.0.6 (2015-09-02) **
 
 * Correct how the LIMIT clause compiles (louispotok)
