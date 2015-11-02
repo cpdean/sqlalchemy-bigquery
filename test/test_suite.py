@@ -99,3 +99,14 @@ def test_limit_compiles_correctly():
                         ).compile(
                                 dialect=bq.BQDialect())
     assert ('LIMIT 5' in str(s)) and ('TOP 5' not in str(s)) 
+
+def test_matches_correct_order():
+    s = sql.select([
+        sql.column("beef")
+    ]).where(
+        sql.column("beef").match("cow")
+    ).compile(
+        compile_kwargs={"literal_binds": True},
+        dialect=bq.BQDialect()
+    )
+    assert "WHERE beef CONTAINS 'cow'" in str(s)
