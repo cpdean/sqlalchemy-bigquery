@@ -2,3 +2,5 @@
 .DS_Store
 dist/
 sqlalchemy_bigquery.egg-info/
+.cache/
+.tox/

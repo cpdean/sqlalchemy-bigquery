@@ -3,7 +3,7 @@ import re
 
 from setuptools import setup
 
-v = open(os.path.join(os.path.dirname(__file__), 'sqlalchemy_bigquery', '__init__.py'))
+v = open(os.path.join(os.path.dirname(__file__), 'sqlalchemy_bigquery', '__init__.py'))  # NOQA
 VERSION = re.compile(r".*__version__ = '(.*?)'", re.S).match(v.read()).group(1)
 v.close()
 
@@ -30,12 +30,13 @@ setup(
     license='MIT',
     packages=['sqlalchemy_bigquery'],
     include_package_data=True,
+    install_requires=['SQLAlchemy==1.0.9'],
     tests_require=['py.test'],
     zip_safe=False,
     entry_points={
         'sqlalchemy.dialects': [
             'bigquery = sqlalchemy_bigquery.pyodbc:BigQueryDialect_pyodbc',
-            'bigquery.pyodbc = sqlalchemy_bigquery.pyodbc:BigQueryDialect_pyodbc',
+            'bigquery.pyodbc = sqlalchemy_bigquery.pyodbc:BigQueryDialect_pyodbc',  # NOQA
         ]
     }
 )

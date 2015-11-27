@@ -1,6 +1,9 @@
 BigQuery dialect for SQLAlchemy
 -------------------------------
 
+.. image:: https://travis-ci.org/cpdean/sqlalchemy-bigquery.svg?branch=master
+    :target: https://travis-ci.org/cpdean/sqlalchemy-bigquery
+
 BigQuery implements a DSL that is similar to SQL with a few quirks:
 
 1. It has a "group each by" hint for grouping over large amounts of data
