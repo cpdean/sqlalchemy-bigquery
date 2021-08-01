@@ -1,3 +1,12 @@
+
+NOTE: this project is vaporware and will not be updated.
+--------------------------------------------------------
+
+The pypi package name has been given to this active project that was formerly known as `pybigquery <https://github.com/googleapis/python-bigquery-sqlalchemy>`_.
+
+
+
+
 BigQuery dialect for SQLAlchemy
 -------------------------------
 
